@@ -1,0 +1,15 @@
+{
+  "name": "P6_dagouneau_sonny",
+  "version": "1.0.0",
+  "description": "Projet 6 Openclassroom",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass ./src/sass/main.scss ./src/styles/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.32.12"
+  }
+}
