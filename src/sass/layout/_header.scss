@@ -1,0 +1,20 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+    flex-grow: 1;
+  }
+
+  img {
+    width: 9rem;
+  }
+
+  h1 {
+    color: $colour-primary;
+    font-size: 1.1rem;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+}
