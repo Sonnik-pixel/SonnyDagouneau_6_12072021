@@ -5,16 +5,16 @@
 //     // On ne peut pas exploiter la réponse renvoyée dans cette promesse en l’état, il faut indiquer le format de réponse souhaité. Ici, on choisit JSON avec response.json().
 //     .then(response => response.json())
 //     .then(result => {
-//         console.log(result.photographers[0].name)
-//         for (var i = 0; i < result.photographers.length; i++) {
-//             console.log(result.photographers[i].name)
-//             // console.log(result)
-//             // }
-//             // result.photographers.forEach(photographer => {
-//             //     console.log(photographer.name);
-//             // });
-//         }
-//     })
+//       console.log(result.photographers[0].name)
+//          for (var i = 0; i < result.photographers.length; i++) {
+//           console.log(result.photographers[i].name)
+//  console.log(result)
+//  }
+//  result.photographers.forEach(photographer => {
+//     console.log(photographer.name);
+//  });
+//        }
+//      })
 //     // Permet d'afficher le type d'erreur rencontrée
 //     .catch(error => alert("Il y a une erreur : " + error));
 
