@@ -6,6 +6,7 @@ class Model {
             // On ne peut pas exploiter la réponse renvoyée dans cette promesse en l’état, il faut indiquer le format de réponse souhaité. Ici, on choisit JSON avec response.json().
             .then(response => response.json())
             .then(result => {
+                // Affiche {photographers: Array(6), media: Array(59)}
                 // console.log(result);
                 return result;
             })

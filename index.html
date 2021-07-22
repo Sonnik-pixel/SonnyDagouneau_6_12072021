@@ -9,6 +9,11 @@
     <!--Je peux mettre ma balise script ici, le js sera chargé en premier puis la page en second-->
     <!--Cependant si attribut "defer" il va différer l'execution à la fin du chargement du document, comme si il était placé à la fin du body (sans bloquer le rendu HTML)-->
     <!--defer va permettre d’exécuter les scripts dans l’ordre donné dès la fin du chargement de la page au contraire de async qui va exécuter les scripts dès que ceux-ci sont prêts.-->
+    <script
+      type="text/javascript"
+      src="/src/js/utils/functions.js"
+      defer
+    ></script>
     <script type="text/javascript" src="/src/js/model.js" defer></script>
     <script type="text/javascript" src="/src/js/controller.js" defer></script>
     <script type="text/javascript" src="/src/js/app.js" defer></script>
@@ -33,7 +38,7 @@
       </nav>
       <h1>Nos Photographes</h1>
     </header>
-    <main></main>
+    <main class="main"></main>
     <footer></footer>
     <!--Script dans le body pour ne pas bloquer le chargement de la page puis charge le js-->
   </body>
