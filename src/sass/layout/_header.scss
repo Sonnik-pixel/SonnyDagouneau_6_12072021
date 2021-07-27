@@ -19,6 +19,41 @@ header {
   }
 }
 
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  justify-content: center;
+  // max-width: 18rem;
+
+  li {
+    border: 0.5px solid #c4c4c4;
+    border-radius: 1rem;
+    padding: 0.2rem 0.4rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: $colour-primary;
+    }
+
+    a {
+      color: $colour-primary;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
 main {
   // display: flex;
   // flex-wrap: wrap;
