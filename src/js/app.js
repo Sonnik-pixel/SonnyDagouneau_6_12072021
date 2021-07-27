@@ -21,6 +21,5 @@
 // // coucouc arrive en premier
 // console.log('coucou');
 
-
 let controller = new Controller();
 controller.afficherListePhotographe();
