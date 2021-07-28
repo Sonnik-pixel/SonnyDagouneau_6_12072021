@@ -61,13 +61,13 @@ ul li {
   font-size: 0.9rem;
 }
 ul li:hover {
-  background-color: #901c1c;
+  background: #901c1c;
+}
+ul li:hover a {
+  color: white;
 }
 ul li a {
   color: #901c1c;
-}
-ul li a:hover {
-  color: white;
 }
 
 /* Components */

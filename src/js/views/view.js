@@ -6,6 +6,10 @@ class View {
     afficherListePhotographe(listPhotographe) {
         for (var i = 0; i < listPhotographe.photographers.length; i++) {
             console.log(listPhotographe.photographers[i].name)
+
+            const photographe = listPhotographe.photographers[i];
+            console.log(photographe.name);
+            console.log(photographe);
             // Je peux construire mon HTML dans la const elHTML
             const elHTML = `<h2 class='namePhotographers'>${listPhotographe.photographers[i].name}</h2>`
             // permet de voir <h1 class ='event'>Mimi Keel</h1> ainsi que tous les autres photographes mais non reconnu en tant que balise.

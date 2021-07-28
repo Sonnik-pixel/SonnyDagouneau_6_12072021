@@ -41,15 +41,15 @@ ul {
     font-size: 0.9rem;
 
     &:hover {
-      background-color: $colour-primary;
+      background: $colour-primary;
+
+      a {
+        color: white;
+      }
     }
 
     a {
       color: $colour-primary;
-
-      &:hover {
-        color: white;
-      }
     }
   }
 }
