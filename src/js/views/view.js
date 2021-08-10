@@ -9,13 +9,15 @@ class View {
             console.log(listPhotographe.photographers[i].name)
 
             const photographe = listPhotographe.photographers[i];
-            console.log(photographe.name);
+            // console.log(photographe.name);
             console.log(photographe);
+            // const city = listPhotographe.photographers.city;
+            console.log(photographe.city);
             // Je peux construire mon HTML dans la const elHTML
             // const elHTML = `<h2 class='namePhotographers'>${listPhotographe.photographers[i].name}</h2>`
             const elHTML = this.afficherDetailPhotographe(photographe)
             // permet de voir <h1 class ='event'>Mimi Keel</h1> ainsi que tous les autres photographes mais non reconnu en tant que balise.
-            console.log(elHTML)
+             console.log(elHTML)
 
             const objHTML = Utils.createElementFromHTML(elHTML)
             // Permet de voir mon H1 avec nom des photographes et est reconnu en tant que balise HTML.
@@ -35,14 +37,14 @@ class View {
         <article>
             <a href="#">
                 <img
-                    src="./assets/img/pictures/Photographers ID Photos/MimiKeel.jpg"
+                    src="./assets/img/pictures/Photographers ID Photos/${photographe.portrait}"
                     alt=""
                 />
                 <h2>${photographe.name}</h2>
             </a>
-            <p>London, UK</p>
-            <p>Voir le beau dans le quotidien</p>
-            <p>400€/jour</p>
+            <p>${photographe.city}, ${photographe.country}</p>
+            <p>${photographe.tagline}</p>
+            <p>${photographe.price}€/jour</p>
             <ul>
                 <li>
                     <a href="#">#portrait</a>
