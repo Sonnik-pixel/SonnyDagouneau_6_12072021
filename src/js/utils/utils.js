@@ -20,7 +20,7 @@ class Utils {
     static createElementFromHTML(htmlString) {
         const baliseDiv = document.createElement("div");
         //création d'un élement <div></div>
-        console.log(baliseDiv);
+        // console.log(baliseDiv);
         //trim() supprime les espaces des deux côtés d'une chaîne.
 
         baliseDiv.innerHTML = htmlString.trim();
