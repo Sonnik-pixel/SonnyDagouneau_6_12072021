@@ -4,6 +4,7 @@ class View {
     }
 
     afficherListePhotographe(listPhotographe) {
+        const section = Utils.createElementFromHTML("<section></section>")
         for (var i = 0; i < listPhotographe.photographers.length; i++) {
             console.log(listPhotographe.photographers[i].name)
 
@@ -11,7 +12,8 @@ class View {
             console.log(photographe.name);
             console.log(photographe);
             // Je peux construire mon HTML dans la const elHTML
-            const elHTML = `<h2 class='namePhotographers'>${listPhotographe.photographers[i].name}</h2>`
+            // const elHTML = `<h2 class='namePhotographers'>${listPhotographe.photographers[i].name}</h2>`
+            const elHTML = this.afficherDetailPhotographe(photographe)
             // permet de voir <h1 class ='event'>Mimi Keel</h1> ainsi que tous les autres photographes mais non reconnu en tant que balise.
             console.log(elHTML)
 
@@ -23,7 +25,38 @@ class View {
             // insertAdjacentElement("afterbegin") --> dans le main ordre inversé, avant son premier enfant.
             // insertAdjacentElement("beforeend") --> dans le main dans l'ordre, après son dernier enfant.
             // insertAdjacentElement("afterend") --> dans le main ordre inversé (Après main lui-même)
-            this.container.insertAdjacentElement("beforeend",objHTML)
+            section.insertAdjacentElement("beforeend",objHTML)
         }
+        this.container.insertAdjacentElement("beforeend",section)
+    }
+
+    afficherDetailPhotographe(photographe){
+        return  `        
+        <article>
+            <a href="#">
+                <img
+                    src="./assets/img/pictures/Photographers ID Photos/MimiKeel.jpg"
+                    alt=""
+                />
+                <h2>${photographe.name}</h2>
+            </a>
+            <p>London, UK</p>
+            <p>Voir le beau dans le quotidien</p>
+            <p>400€/jour</p>
+            <ul>
+                <li>
+                    <a href="#">#portrait</a>
+                </li>
+                <li>
+                    <a href="#">#events</a>
+                </li>
+                <li>
+                    <a href="#">#travel</a>
+                </li>
+                <li>
+                    <a href="#">#animals</a>
+                </li>
+            </ul>
+        </article>`
     }
 }
