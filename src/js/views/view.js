@@ -5,18 +5,31 @@ class View {
 
     afficherListePhotographe(listPhotographe) {
         const section = Utils.createElementFromHTML("<section></section>")
-        for (var i = 0; i < listPhotographe.photographers.length; i++) {
-            console.log(listPhotographe.photographers[i].name)
-            // debugger
-            const photographe = listPhotographe.photographers[i];
-            const tag = photographe.tags;
-            console.log(tag);
-            // for (var i = 0; i < tag.lenght; i++) {
-            //     console.log(tag);
-            // }
 
-            // console.log(photographe.name);
+        const globalTags = [];
+        const filterTags = [];
+
+        for (var i = 0; i < listPhotographe.photographers.length; i++) {
+            // console.log(listPhotographe.photographers[i].name)
+            
+            const photographe = listPhotographe.photographers[i];
+            const tags = photographe.tags;
+            // console.log(tags); 
+            
+          
+            for (var index = 0; index < tags.length; index++) {
+                const currentTag = tags[index];
+                globalTags.push(currentTag);
+                console.log(currentTag);
+            }
+
+
+            // console.log(listPhotographe);
+            // Affiche le media et les 6 photohographers
+
             // console.log(photographe);
+            // Affiche l'objet d'un photographe et les tags
+
             // const city = listPhotographe.photographers.city;
             // console.log(photographe.city);
             // Je peux construire mon HTML dans la const elHTML
@@ -35,6 +48,16 @@ class View {
             // insertAdjacentElement("afterend") --> dans le main ordre inversé (Après main lui-même)
             section.insertAdjacentElement("beforeend",objHTML)
         }
+
+        for (let index = 0; index < globalTags.length; index++) {
+            const currentGlobalTag = globalTags[index];
+            // Si la valeur (event) n'est pas présente dans le tableau je l'ajoute.
+            if (filterTags.includes(currentGlobalTag) === false) { 
+                filterTags.push(currentGlobalTag)
+            }
+        }
+        // console.log(globalTags);
+        console.log(filterTags);
 
         this.container.insertAdjacentElement("beforeend",section)
     }
