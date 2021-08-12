@@ -19,3 +19,9 @@
     @content;
   }
 }
+
+@mixin xxl {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}
