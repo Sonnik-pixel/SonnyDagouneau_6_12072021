@@ -5,3 +5,17 @@
 @mixin box-shadow-img {
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
 }
+
+/*Responsive, technique de Landon Schropp*/
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}

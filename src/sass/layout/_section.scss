@@ -1,0 +1,69 @@
+section article {
+    display: flex;
+    flex-wrap: wrap;
+    // background-color:seagreen;
+    flex-direction: column;
+    align-items: center;
+  
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    img {
+      @include box-shadow-img;
+      border-radius: 8rem;
+      width: 14rem;
+      height: 14rem;
+      object-fit: cover;
+      margin: 1rem 0;
+    }
+  
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: $colour-secondary;
+    }
+  
+    p:nth-child(2) {
+      color: $colour-primary;
+      font-size: 1rem;
+    }
+  
+    p:nth-child(3) {
+      font-size: 0.7rem;
+      margin: 0.2rem 0;
+    }
+  
+    p:nth-child(4) {
+      color: #757575;
+      font-size: 0.7rem;
+    
+    }
+  }
+
+  @include tablet {
+    section {
+      display: flex;
+      flex-wrap: wrap;
+
+      article {
+        width: 50%;
+        margin: auto;
+      }
+    }
+  }
+
+  @include desktop {
+    section {
+      display: flex;
+      flex-wrap: wrap;
+
+      article {
+        width: 32%;
+        margin: auto;
+      }
+    }
+  }
