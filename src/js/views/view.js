@@ -9,14 +9,16 @@ class View {
         const globalTags = [];
         const filterTags = [];
 
+        // debugger
         for (var i = 0; i < listPhotographe.photographers.length; i++) {
             // console.log(listPhotographe.photographers[i].name)
             
             const photographe = listPhotographe.photographers[i];
             const tags = photographe.tags;
+            // Affiche, dans un tableau pour chaque personne, ses tags.
             // console.log(tags); 
             
-          
+            // Mettre tous mes tags dans globalTags
             for (var index = 0; index < tags.length; index++) {
                 const currentTag = tags[index];
                 globalTags.push(currentTag);
@@ -49,6 +51,7 @@ class View {
             section.insertAdjacentElement("beforeend",objHTML)
         }
 
+        // Quand mon global Tags est complet, cette boucle se lance pour trier.
         for (let index = 0; index < globalTags.length; index++) {
             const currentGlobalTag = globalTags[index];
             // Si la valeur (event) n'est pas présente dans le tableau je l'ajoute.
