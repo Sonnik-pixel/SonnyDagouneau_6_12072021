@@ -31,17 +31,6 @@ header img {
   width: 9rem;
 }
 
-h1 {
-  color: #901c1c;
-  font-size: 1.1rem;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 3.4rem;
-  right: 1.5rem;
-}
-
 nav {
   width: 100%;
   display: flex;
@@ -86,14 +75,18 @@ ul li a {
     width: 40rem;
     margin: auto;
   }
-
-  h1 {
-    transition: all 0.7s ease-in-out;
-    font-size: 1.9rem;
-    margin-top: 1.1rem;
-    right: 6rem;
-  }
 }
+h1 {
+  color: #901c1c;
+  font-size: 1.1rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 3.4rem;
+  right: 1.5rem;
+}
+
 section article {
   display: flex;
   flex-wrap: wrap;
@@ -131,11 +124,15 @@ section article p:nth-child(4) {
   color: #757575;
   font-size: 0.7rem;
 }
+section article ul {
+  padding: 0.5rem 0;
+}
 
 @media (min-width: 768px) {
   section {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 4rem;
   }
   section article {
     width: 50%;
@@ -146,10 +143,18 @@ section article p:nth-child(4) {
   section {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 4rem;
   }
   section article {
     width: 32%;
-    margin: auto;
+  }
+}
+@media (min-width: 1400px) {
+  h1 {
+    transition: all 0.7s ease-in-out;
+    font-size: 1.9rem;
+    margin-top: 1.1rem;
+    right: 6rem;
   }
 }
 /* Components */
