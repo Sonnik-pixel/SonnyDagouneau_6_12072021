@@ -9,6 +9,7 @@ class View {
         const globalTags = [];
         const filterTags = [];
 
+
         // debugger
         for (var i = 0; i < listPhotographe.photographers.length; i++) {
             // console.log(listPhotographe.photographers[i].name)
@@ -37,6 +38,8 @@ class View {
             // Je peux construire mon HTML dans la const elHTML
             // const elHTML = `<h2 class='namePhotographers'>${listPhotographe.photographers[i].name}</h2>`
             const elHTML = this.afficherDetailPhotographe(photographe)
+
+            // const ulHTML = this.afficherTagPhotographe(filterTags)
             // permet de voir <h1 class ='event'>Mimi Keel</h1> ainsi que tous les autres photographes mais non reconnu en tant que balise.
             //  console.log(elHTML)
 
@@ -63,6 +66,29 @@ class View {
         console.log(filterTags);
 
         this.container.insertAdjacentElement("beforeend",section)
+
+        // 16/08 //
+        const ul = document.getElementById('containerUl');
+        console.log(ul);
+
+        let cryptoHtml = returnHtmlTag(filterTags);
+        ul.innerHTML = cryptoHtml;
+        
+        function returnHtmlTag(parametrefilterTags){
+
+        let html = '';
+        for (let index = 0; index < filterTags.length; index++) {
+            const element = filterTags[index];
+            // += permet de créer trois élements si = juste le premier
+            html += `<li>
+                        <a href="#">#${element}</a>
+                    </li>`
+            // affiche 3 fois car longeur du tableaux #sports #portraits #events
+            console.log(element)
+        }
+        // Permet de m'afficher le HTML
+        return html;
+        }
     }
 
     afficherDetailPhotographe(photographe){
@@ -80,7 +106,7 @@ class View {
             <p>${photographe.price}€/jour</p>
             <ul>
                 <li>
-                    <a href="#">#${photographe.tags[0]}</a>
+                    <a href="#">#portrait</a>
                 </li>
                 <li>
                     <a href="#">#events</a>
@@ -94,4 +120,62 @@ class View {
             </ul>
         </article>`
     }
+
+    // afficherTagPhotographe(parametre){
+    //     const ul = document.getElementById('containerUl');
+    //     console.log(ul);
+    //     let html = '';
+
+    //     return `
+    //     <li>
+    //     <a href="#">#portrait</a>
+    //     </li>
+    //     `
+    // }
 }
+
+// const phrase = "Sonny mon prénom sonny j'ai 30 ans pour un Sonny ça fait des ans";
+// const motMin = phrase.toLowerCase().split(" ");
+// // console.log(motMin);
+
+// var compteur ={};
+// console.log(compteur)
+
+// for ( var i = 0; i < motMin.length; i ++) {
+//     var mot = motMin[i];
+//     console.log(mot)
+//     if  (compteur[mot] === undefined) {
+//         compteur[mot] = 1;
+//     } else {
+//         compteur[mot]++
+//     }
+// }
+
+
+
+//  for (let i = 0; i < phrase.length; i++) {
+//      const element = phrase[i];
+//      // affiche ma phrase et le nombre de caractère
+//      console.log(phrase);
+//  }
+
+//  function splitMot(toto, separator) {
+//     const motSplit = toto.split(separator);
+//     console.log(motSplit);
+//     const filterName = [];
+//     filterName.push(motSplit);
+//     console.log(filterName)
+
+//     for (let index = 0; index < filterName.length; index++) {
+//         const element = filterName[index];
+//         console.log(element)
+//     }
+//  }
+// var espace = " ";
+// // var virgule = ",";
+
+// splitMot(phrase, espace);
+// splitString(tempestString);
+// splitString(phrase, virgule);
+
+// console.log(splitString);
