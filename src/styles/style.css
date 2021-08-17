@@ -51,6 +51,30 @@ ul li {
   margin-bottom: 0.2rem;
   font-size: 0.9rem;
 }
+ul li:nth-child(1) {
+  order: 0;
+}
+ul li:nth-child(2) {
+  order: 8;
+}
+ul li:nth-child(3) {
+  order: 5;
+}
+ul li:nth-child(4) {
+  order: 7;
+}
+ul li:nth-child(5) {
+  order: 6;
+}
+ul li:nth-child(6) {
+  order: 4;
+}
+ul li:nth-child(7) {
+  order: 2;
+}
+ul li:nth-child(8) {
+  order: 3;
+}
 ul li:hover {
   background: #901c1c;
 }

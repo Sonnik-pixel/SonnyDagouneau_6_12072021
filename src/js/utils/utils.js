@@ -1,22 +1,10 @@
-//function magique permet de tranformer une string en objet
+//function magique permet de transformer une string en objet
 
-
-// const createElementFromHTML = (htmlString) => {
-//     debugger
-//     const baliseDiv = document.createElement("div");
-//     //création d'un élement <div></div>
-//     console.log(baliseDiv);
-//     //trim() supprime les espaces des deux côtés d'une chaîne.
-
-//     baliseDiv.innerHTML = htmlString.trim();
-//     // Remplace ma div par mon H1
-//     console.log(baliseDiv.innerHTML);
-//     // Change this to div.childNodes to support multiple top-level nodes
-//     return baliseDiv.firstChild;
-// };
+// je créer une class utils qui va créer du html, juste a disposition pour le moment, ne s'execute pas encore.
+// static signifie
 
 class Utils {
-    //
+    // pas besoin d'instancier car static present donc pas de this
     static createElementFromHTML(htmlString) {
         const baliseDiv = document.createElement("div");
         //création d'un élement <div></div>

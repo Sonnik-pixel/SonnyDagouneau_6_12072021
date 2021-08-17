@@ -1,3 +1,5 @@
+// class static si tous les élements sont static
+
 class Model {
     static get(url) {
         // console.log(url);

@@ -67,29 +67,30 @@ class View {
 
         this.container.insertAdjacentElement("beforeend",section)
 
-        // 16/08 //
+        // 16/08 // a ranger
         const ul = document.getElementById('containerUl');
         console.log(ul);
 
-        let cryptoHtml = returnHtmlTag(filterTags);
+        let cryptoHtml = this.returnHtmlTag(filterTags);
         ul.innerHTML = cryptoHtml;
-        
-        function returnHtmlTag(parametrefilterTags){
+        //
 
+    }
+    // si function dans class je ne suis pas obligé de marquer function 
+    returnHtmlTag(parametrefilterTags){
         let html = '';
-        for (let index = 0; index < filterTags.length; index++) {
-            const element = filterTags[index];
-            // += permet de créer trois élements si = juste le premier
+        for (let index = 0; index < parametrefilterTags.length; index++) {
+            const element = parametrefilterTags[index];
+            // += permet de créer 8 élements, si = juste le premier += ajoute 
             html += `<li>
                         <a href="#">#${element}</a>
                     </li>`
-            // affiche 3 fois car longeur du tableaux #sports #portraits #events
+            // affiche 8 fois car longeur du tableaux 
             console.log(element)
         }
         // Permet de m'afficher le HTML
         return html;
         }
-    }
 
     afficherDetailPhotographe(photographe){
         return  `        
