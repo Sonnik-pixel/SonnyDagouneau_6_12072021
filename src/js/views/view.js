@@ -9,23 +9,25 @@ class View {
         const globalTags = [];
         const filterTags = [];
 
-
         // debugger
         for (var i = 0; i < listPhotographe.photographers.length; i++) {
+            // Affiche le nom des photographes
             // console.log(listPhotographe.photographers[i].name)
             
             const photographe = listPhotographe.photographers[i];
             const tags = photographe.tags;
-            // Affiche, dans un tableau pour chaque personne, ses tags.
+
             // console.log(tags); 
+            // Affiche, dans un tableau pour chaque personne, ses tags.
+            // console.log(photographe);
+            // Affiche, dans un objet pour chaque personne, tous les détails d'un photographe.
             
             // Mettre tous mes tags dans globalTags
             for (var index = 0; index < tags.length; index++) {
                 const currentTag = tags[index];
                 globalTags.push(currentTag);
-                console.log(currentTag);
+                // console.log(currentTag);
             }
-
 
             // console.log(listPhotographe);
             // Affiche le media et les 6 photohographers
@@ -33,8 +35,6 @@ class View {
             // console.log(photographe);
             // Affiche l'objet d'un photographe et les tags
 
-            // const city = listPhotographe.photographers.city;
-            // console.log(photographe.city);
             // Je peux construire mon HTML dans la const elHTML
             // const elHTML = `<h2 class='namePhotographers'>${listPhotographe.photographers[i].name}</h2>`
             const elHTML = this.afficherDetailPhotographe(photographe)
@@ -63,7 +63,7 @@ class View {
             }
         }
         // console.log(globalTags);
-        console.log(filterTags);
+        // console.log(filterTags);
 
         this.container.insertAdjacentElement("beforeend",section)
 
@@ -93,6 +93,22 @@ class View {
         }
 
     afficherDetailPhotographe(photographe){
+        const tagss = photographe.tags;
+        console.log(tagss);
+        // Affiche, dans un tableau pour chaque personne, ses tags.
+        let htmltag = "";
+
+        debugger
+        for (let index = 0; index < tagss.length; index++) {
+            const element = tagss[index];
+            console.log(element);
+            // Affiche, le nom des tags.
+
+            htmltag += `<li>
+                            <a href="#">#${element}</a>
+                        </li>`
+        }
+
         return  `        
         <article>
             <a href="#">
@@ -106,18 +122,7 @@ class View {
             <p>${photographe.tagline}</p>
             <p>${photographe.price}€/jour</p>
             <ul>
-                <li>
-                    <a href="#">#portrait</a>
-                </li>
-                <li>
-                    <a href="#">#events</a>
-                </li>
-                <li>
-                    <a href="#">#travel</a>
-                </li>
-                <li>
-                    <a href="#">#animals</a>
-                </li>
+            ${htmltag}
             </ul>
         </article>`
     }
