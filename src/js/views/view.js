@@ -37,6 +37,8 @@ class View {
 
             // Je peux construire mon HTML dans la const elHTML
             // const elHTML = `<h2 class='namePhotographers'>${listPhotographe.photographers[i].name}</h2>`
+
+            // This
             const elHTML = this.afficherDetailPhotographe(photographe)
 
             // const ulHTML = this.afficherTagPhotographe(filterTags)
@@ -57,7 +59,7 @@ class View {
         // Quand mon global Tags est complet, cette boucle se lance pour trier.
         for (let index = 0; index < globalTags.length; index++) {
             const currentGlobalTag = globalTags[index];
-            // Si la valeur (event) n'est pas présente dans le tableau je l'ajoute.
+            // Si la valeur (currentgLobalTag) n'est pas présente dans le tableau (FilterTag) je l'ajoute.
             if (filterTags.includes(currentGlobalTag) === false) { 
                 filterTags.push(currentGlobalTag)
             }
@@ -98,7 +100,7 @@ class View {
         // Affiche, dans un tableau pour chaque personne, ses tags.
         let htmltag = "";
 
-        debugger
+        
         for (let index = 0; index < tagss.length; index++) {
             const element = tagss[index];
             console.log(element);
@@ -125,6 +127,35 @@ class View {
             ${htmltag}
             </ul>
         </article>`
+    }
+
+    afficherDetailPhotographeById(idPhotographe, listPhotographe){ 
+        const div = Utils.createElementFromHTML("<div></div>")
+        console.log(listPhotographe);
+        // debugger
+        // 2 parmis la liste des photographes récupérer celui qui a l'ID Photographe parcourir dans boucle si id est le même.
+        let elNameHTML = "";
+        // let test = listPhotographe.photographers.length;
+        // console.log(test);
+        for (let index = 0; index < listPhotographe.photographers.length; index++) {
+            let toto = listPhotographe.photographers[index];
+            console.log(toto);
+            // listPhotographe.photographers[i] = un photographe avec ces infos 
+            // listPhotographe.photographers[5] = {name: "Marcel Nikolic", id: 195, city: "Berlin", country: "Germany", tags: Array(2), …}
+            if (toto.id === idPhotographe) {
+                console.log(toto.id);
+                console.log(toto.name);
+
+                elNameHTML = `<li>
+                            <a href="#">${toto.name}</a>
+                        </li>`
+                // id.push(idPhotographe);
+            }  
+        }
+        // 3 afficher le detail de ce photographe consolelog au debut et ensuite dans le html
+        const objHTML = Utils.createElementFromHTML(elNameHTML)
+        div.insertAdjacentElement("beforeend",objHTML)
+        this.container.insertAdjacentElement("beforeend",div)
     }
 
     // afficherTagPhotographe(parametre){

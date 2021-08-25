@@ -1,4 +1,4 @@
-// class static si tous les élements sont static
+// si méthode est statique pas besoin d'instancer la class avec new
 
 class Model {
     static get(url) {

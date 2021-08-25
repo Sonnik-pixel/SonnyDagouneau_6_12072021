@@ -7,8 +7,19 @@ class Controller {
         // Affiche {photographers: Array(6), media: Array(59)}
         // console.log(listPhotographe);
 
-        // permet de faire un affichage instancier nouvelleview.js
+        // instancie view et on le place dans la variable view puis on appelle afficherListePhotographe en lui passant la liste des photographes
         let view = new View()
         view.afficherListePhotographe(listPhotographe)
+    }
+
+    async afficherDetailPhotographe(idPhotographe){
+    
+        console.log(idPhotographe);
+        // 1 récupérer la liste des photographges comme au dessus DONE
+        let listPhotographe = await Model.get('https://sonnik-pixel.github.io/SonnyDagouneau_6_12072021/assets/data.json');
+        // console.log(listPhotographe);
+
+        let view = new View()
+        view.afficherDetailPhotographeById(idPhotographe, listPhotographe)
     }
 }
