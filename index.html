@@ -4,38 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/styles/style.css" />
     <link rel="icon" href="./assets/img/favicon/favicon.png" />
     <!--Je peux mettre ma balise script ici, le js sera chargé en premier puis la page en second-->
     <!--Cependant si attribut "defer" il va différer l'execution à la fin du chargement du document, comme si il était placé à la fin du body (sans bloquer le rendu HTML)-->
     <!--defer va permettre d’exécuter les scripts dans l’ordre donné dès la fin du chargement de la page au contraire de async qui va exécuter les scripts dès que ceux-ci sont prêts.-->
 
-    <!--1) Utils class pour transformer une string en objet-->
-    <script type="text/javascript" src="./src/js/utils/utils.js" defer></script>
-
-    <!--2) Model class pour récupérer mon fichier JSON-->
-    <script type="text/javascript" src="./src/js/model.js" defer></script>
-
-    <!--3) View class pour faire l'affichage de mon site-->
-    <script type="text/javascript" src="./src/js/views/view.js" defer></script>
-
-    <!--4) Controller class pour async et await mon JSON et instancier view et lancer afficherListePhotographe-->
-    <script type="text/javascript" src="./src/js/controller.js" defer></script>
-    
     <!--5) App.js pour créer new Controller,l'instancier et permet de lancer afficher liste photographe dans controller-->
-    <script type="text/javascript" src="./src/js/app.js" defer></script>
+    <script type="module" src="./src/js/app.js" defer></script>
 
     <title>FishEye</title>
   </head>
+
   <body>
     <header>
       <a href="./index.html">
         <img src="./assets/img/logo/Logo.svg" alt="Fisheye Home page" />
       </a>
       <nav>
-        <ul id="containerUl">
-        </ul>
+        <ul id="containerUl"></ul>
       </nav>
     </header>
     <main class="main">
