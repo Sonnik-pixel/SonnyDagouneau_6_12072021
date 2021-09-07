@@ -87,6 +87,9 @@ h1 {
   right: 1.5rem;
 }
 
+section .hide {
+  display: none;
+}
 section article {
   display: flex;
   flex-wrap: wrap;

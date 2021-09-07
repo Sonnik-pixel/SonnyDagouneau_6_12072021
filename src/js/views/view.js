@@ -82,22 +82,59 @@ export default class View {
     let listHtmlTag = document.getElementsByClassName("tags");
     for (let index = 0; index < listHtmlTag.length; index++) {
       const currentTag = listHtmlTag[index];
+      // <a href="#" class="tags">#events</a>
+      // Affiche tous les tags de toute la première page
       console.log(currentTag);
       currentTag.addEventListener("click", (event) => {
         // (event) l' évenement qui s'est produit, représente le clic, donne toutes les infos
         // appeler ma function Ou j'aurais pu écrire le contenu ici, simplement pour séparer les choses
-        this.showPhotographerByTag(event);
+        this.showPhotographerByTag(event, currentTag);
       });
     }
   }
 
-  // showPhotographerByTag est dans une classe donc pour l'apeller dans un function, j'utilise this.nomdefunction pour ligne 87
-  showPhotographerByTag(event) {
-    console.log(event.target.innerText);
-    // récupérer la liste de tous les photoghraphes (articles);
+  // showPhotographerByTag est dans une classe donc pour l'apeller dans un function, j'utilise this.nomdefunction pour ligne 91
+  showPhotographerByTag(event, currentTag) {
+    // Affiche le TAG sur lequel je clique !
+    const tagName = currentTag.textContent;
+    console.log(tagName);
+
+    // récupérer la liste de tous les photoghraphes (articles) DONE
     const articles = document.getElementsByTagName("article");
+    // Affiche un tableau et 6 articles
     console.log(articles);
-    // parcourir cette liste de photoghrapher
+    // if (test === test1) {
+    //   articles.classList.add("hide");
+    // }
+    // parcourir cette liste de photographer
+    for (let index = 0; index < articles.length; index++) {
+      const currentArticle = articles[index];
+      // currentArticle car c'est mon article en cours, sur tous mes articles
+      // Affiche mes 6 articles : <article>...</article>
+      console.log(currentArticle);
+
+      const listTag = currentArticle.getElementsByClassName("tags");
+      console.log(listTag);
+
+      let tagTrouve = false;
+      // faire une boucle pour parcourir tous les tags de tous les photographes
+      for (let index = 0; index < listTag.length; index++) {
+        const currentTag = listTag[index];
+        console.log(currentTag.textContent);
+
+        if (tagName === currentTag.textContent) {
+          console.log("tag trouvé !");
+          tagTrouve = true;
+        } else {
+          console.log("tag non trouvé !");
+        }
+      }
+      if (tagTrouve === false) {
+        currentArticle.classList.add("hide");
+      } else {
+        currentArticle.classList.remove("hide");
+      }
+    }
     // pour chaque photographe est ce que le tag est présent ou pas, si présent display block; si non présent display none
 
     // au clic sur tags, rajouter une classe pour dire que j'ai cliqué dessus

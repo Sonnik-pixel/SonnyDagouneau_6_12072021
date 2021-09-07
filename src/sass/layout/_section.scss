@@ -10,6 +10,9 @@ h1 {
 }
 
 section {
+  .hide {
+    display: none;
+  }
 
   article {
     display: flex;
@@ -17,13 +20,13 @@ section {
     // background-color:seagreen;
     flex-direction: column;
     align-items: center;
-  
+
     a {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-  
+
     img {
       @include box-shadow-img;
       border-radius: 8rem;
@@ -32,28 +35,27 @@ section {
       object-fit: cover;
       margin: 1rem 0;
     }
-  
+
     h2 {
       text-align: center;
       font-size: 2.2rem;
       font-weight: 400;
       color: $colour-secondary;
     }
-  
+
     p:nth-child(2) {
       color: $colour-primary;
       font-size: 1rem;
     }
-  
+
     p:nth-child(3) {
       font-size: 0.7rem;
       margin: 0.2rem 0;
     }
-  
+
     p:nth-child(4) {
       color: #757575;
       font-size: 0.7rem;
-    
     }
 
     ul {
@@ -62,37 +64,37 @@ section {
   }
 }
 
-  @include tablet {
-    section {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 4rem;
+@include tablet {
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
 
-      article {
-        width: 50%;
-        margin: auto;
-      }
+    article {
+      width: 50%;
+      margin: auto;
     }
   }
+}
 
-  @include desktop {
-    section {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: 4rem;
+@include desktop {
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
 
-      article {
-        width: 32%;
-        // margin: auto;
-      }
+    article {
+      width: 32%;
+      // margin: auto;
     }
   }
+}
 
-  @include xxl {
-    h1 {
-      transition: all 0.7s ease-in-out;
-      font-size: 1.9rem;
-      margin-top: 1.1rem;
-      right: 6rem;
-    }
+@include xxl {
+  h1 {
+    transition: all 0.7s ease-in-out;
+    font-size: 1.9rem;
+    margin-top: 1.1rem;
+    right: 6rem;
   }
+}

@@ -7,7 +7,7 @@ import Controller from "./controller.js";
 let controller = new Controller();
 // permet de lancer afficher liste photographe dans controller
 
-// J'ai commenté la ligne ci-dessous pour me concentrer sur l'affichage afficherDetailPhotographe
 controller.afficherListePhotographe();
 
 // controller.afficherDetailPhotographe(925);
+// J'ai commenté la ligne ci-dessous pour me concentrer sur l'affichage afficherListePhotographe
