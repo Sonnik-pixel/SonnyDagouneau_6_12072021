@@ -85,10 +85,16 @@ export default class View {
       // <a href="#" class="tags">#events</a>
       // Affiche tous les tags de toute la première page
       console.log(currentTag);
+
       currentTag.addEventListener("click", (event) => {
         // (event) l' évenement qui s'est produit, représente le clic, donne toutes les infos
         // appeler ma function Ou j'aurais pu écrire le contenu ici, simplement pour séparer les choses
-        this.showPhotographerByTag(event, currentTag);
+        console.log(currentTag);
+        if (currentTag.innerHTML === "#All") {
+          this.resetWithTag(event);
+        } else {
+          this.showPhotographerByTag(event, currentTag);
+        }
       });
     }
   }
@@ -98,6 +104,7 @@ export default class View {
     // Affiche le TAG sur lequel je clique !
     const tagName = currentTag.textContent;
     console.log(tagName);
+    console.log(event);
 
     // récupérer la liste de tous les photoghraphes (articles) DONE
     const articles = document.getElementsByTagName("article");
@@ -135,29 +142,41 @@ export default class View {
         currentArticle.classList.remove("hide");
       }
     }
-    // pour chaque photographe est ce que le tag est présent ou pas, si présent display block; si non présent display none
+    // créer un tag pour RESET l'affichage de tous les photographes.
 
     // au clic sur tags, rajouter une classe pour dire que j'ai cliqué dessus
     // et enlever cette classe de tous les autres tags (donc reparcourir pour enlever les classes)
+  }
 
-    // BONUS au clic, je reset tout l'affichage.  pas de reload de page.
+  resetWithTag(event) {
+    console.log(event);
+    const reset = document.querySelectorAll("article.hide");
+    console.log(reset);
+    for (let index = 0; index < reset.length; index++) {
+      const currentReset = reset[index];
+      currentReset.classList.remove("hide");
+    }
   }
 
   // si function dans class je ne suis pas obligé de marquer function
   // permet d'afficher ma navbar
   returnHtmlTag(parametrefilterTags) {
     let html = "";
+    let reset = "";
     for (let index = 0; index < parametrefilterTags.length; index++) {
       const element = parametrefilterTags[index];
       // += permet de créer 8 élements, si = juste le premier += ajoute
       html += `<li>
                     <a href="#" class="tags">#${element}</a>
                </li>`;
+      reset = `<li>
+                    <a href="#" class="reset tags">#All</a>
+              </li>`;
       // affiche le nom des tags de ma navbar
       // console.log(element);
     }
     // Permet de m'afficher le HTML
-    return html;
+    return html + reset;
   }
 
   // permet d'afficher mes photographes et leurs tag
