@@ -66,7 +66,7 @@ export default class View {
         filterTags.push(currentGlobalTag);
       }
     }
-    // console.log(globalTags);
+    // console.log(globalTags);;
     // console.log(filterTags);
 
     this.container.insertAdjacentElement("beforeend", section);
