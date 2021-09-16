@@ -22,8 +22,8 @@ class Model {
     let list = await this.get(url);
     console.log(idPhotographe);
     let listPhotographe = list["photographers"];
-    let listPhotographeMedia = list["media"];
-    console.log(listPhotographeMedia);
+    // let listPhotographeMedia = list["media"];
+    // console.log(listPhotographeMedia[0].id);
     //Affiche tous mes photographe dans un tableau
     for (let index = 0; index < listPhotographe.length; index++) {
       const currentPhotographe = listPhotographe[index];
@@ -32,31 +32,26 @@ class Model {
         return currentPhotographe;
       }
     }
-    for (let index = 0; index < listPhotographeMedia.length; index++) {
-      const currentPhotographe = listPhotographeMedia[index];
-      console.log(currentPhotographe);
-      if (currentPhotographe.id == idPhotographe) {
-        return currentPhotographe;
-      }
-    }
-    return null;
   }
 
   //création de la nouvelle méthode MEDIA
-  // async getMediaByPhotographeId(url, idPhotographe) {
-  //   let list = await this.get(url);
+  async getMediaByPhotographeId(url, idPhotographe) {
+    let list = await this.get(url);
+    let medias = [];
 
-  //   let listPhotographe = list["media"];
-  //   console.log(listPhotographe);
-  //   for (let index = 0; index < listPhotographe.length; index++) {
-  //     const currentPhotographe = listPhotographe[index];
-  //     console.log(currentPhotographe);
-  //     if (currentPhotographe.id == idPhotographe) {
-  //       return currentPhotographe;
-  //     }
-  //   }
-  //   return null;
-  // }
+    let listMedia = list["media"];
+    // console.log(listMedia);
+    // Affiche un tableau d'objet avec tous les medias
+    for (let index = 0; index < listMedia.length; index++) {
+      const currentMedia = listMedia[index];
+      // console.log(currentMedia);
+      // Affiche les objets de mon tableau
+      if (currentMedia.photographerId == idPhotographe) {
+        medias.push(currentMedia);
+      }
+    }
+    return medias;
+  }
 }
 
 export default Model;

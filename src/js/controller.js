@@ -20,6 +20,12 @@ export default class Controller {
     view.afficherListePhotographe(listPhotographe);
   }
 
+  afficherDetailEtMedia(idPhotographe) {
+    console.log(idPhotographe);
+    this.afficherDetailPhotographe(idPhotographe);
+    this.getMediaAndDisplay(idPhotographe);
+  }
+
   async afficherDetailPhotographe(idPhotographe) {
     // console.log(idPhotographe);
     // 1 récupérer la liste des photographes comme au dessus DONE
@@ -35,17 +41,17 @@ export default class Controller {
   }
 
   // création de la nouvelle méthode MEDIA
-  // async getMediaByPhotographeId(idPhotographe) {
-  //   console.log(idPhotographe);
-  //   // 1 récupérer la liste des photographes comme au dessus DONE
+  async getMediaAndDisplay(idPhotographe) {
+    console.log(idPhotographe);
+    // 1 récupérer la liste des photographes comme au dessus DONE
 
-  //   let photographe = await this.model.getPhotographeById(
-  //     "https://sonnik-pixel.github.io/SonnyDagouneau_6_12072021/assets/data.json",
-  //     idPhotographe
-  //   );
-  //   // console.log(listPhotographe);
+    // console.log(listPhotographe);
+    await this.model.getMediaByPhotographeId(
+      "../../assets/data.json",
+      idPhotographe
+    );
 
-  //   let view = new View();
-  //   view.afficherDetailPhotographeById(photographe);
-  // }
+    const view = new View();
+    view.afficherMedia("test");
+  }
 }

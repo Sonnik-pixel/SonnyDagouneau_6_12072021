@@ -84,7 +84,7 @@ export default class View {
       const currentTag = listHtmlTag[index];
       // <a href="#" class="tags">#events</a>
       // Affiche tous les tags de toute la première page
-      console.log(currentTag);
+      // console.log(currentTag);
 
       currentTag.addEventListener("click", (event) => {
         // (event) l' évenement qui s'est produit, représente le clic, donne toutes les infos
@@ -199,12 +199,12 @@ export default class View {
 
     return `        
         <article>
-            <a href="#">
+            <a onclick="controller.afficherDetailEtMedia('${photographe.id}')" href="#">
                 <img
                     src="./assets/img/pictures/Photographers ID Photos/${photographe.portrait}"
                     alt=""
                 />
-                <h2 onclick="controller.afficherDetailPhotographe('${photographe.id}')">${photographe.name}</h2>
+                <h2>${photographe.name}</h2>
             </a>
             <p>${photographe.city}, ${photographe.country}</p>
             <p>${photographe.tagline}</p>
@@ -245,5 +245,8 @@ export default class View {
     console.log(objHTML);
     div.appendChild(objHTML);
     this.container.insertAdjacentElement("beforeend", div);
+  }
+  afficherMedia(medias) {
+    console.log(medias);
   }
 }
