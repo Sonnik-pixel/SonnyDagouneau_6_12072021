@@ -2,11 +2,14 @@ import Model from "./model.js";
 import View from "./views/view.js";
 
 export default class Controller {
+  constructor() {
+    this.model = new Model();
+  }
   // asyns car await de présent, fonctionne en parallèle
   // la ligne 8 attends que le fichier de données soit chargées
   async afficherListePhotographe() {
     // Je récupère mes données
-    let listPhotographe = await Model.get(
+    let listPhotographe = await this.model.get(
       "https://sonnik-pixel.github.io/SonnyDagouneau_6_12072021/assets/data.json"
     );
     // Affiche {photographers: Array(6), media: Array(59)}
@@ -18,14 +21,31 @@ export default class Controller {
   }
 
   async afficherDetailPhotographe(idPhotographe) {
-    console.log(idPhotographe);
-    // 1 récupérer la liste des photographges comme au dessus DONE
-    let listPhotographe = await Model.get(
-      "https://sonnik-pixel.github.io/SonnyDagouneau_6_12072021/assets/data.json"
+    // console.log(idPhotographe);
+    // 1 récupérer la liste des photographes comme au dessus DONE
+
+    let photographe = await this.model.getPhotographeById(
+      "https://sonnik-pixel.github.io/SonnyDagouneau_6_12072021/assets/data.json",
+      idPhotographe
     );
     // console.log(listPhotographe);
 
     let view = new View();
-    view.afficherDetailPhotographeById(idPhotographe, listPhotographe);
+    view.afficherDetailPhotographeById(photographe);
   }
+
+  // création de la nouvelle méthode MEDIA
+  // async getMediaByPhotographeId(idPhotographe) {
+  //   console.log(idPhotographe);
+  //   // 1 récupérer la liste des photographes comme au dessus DONE
+
+  //   let photographe = await this.model.getPhotographeById(
+  //     "https://sonnik-pixel.github.io/SonnyDagouneau_6_12072021/assets/data.json",
+  //     idPhotographe
+  //   );
+  //   // console.log(listPhotographe);
+
+  //   let view = new View();
+  //   view.afficherDetailPhotographeById(photographe);
+  // }
 }

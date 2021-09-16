@@ -204,7 +204,7 @@ export default class View {
                     src="./assets/img/pictures/Photographers ID Photos/${photographe.portrait}"
                     alt=""
                 />
-                <h2>${photographe.name}</h2>
+                <h2 onclick="controller.afficherDetailPhotographe('${photographe.id}')">${photographe.name}</h2>
             </a>
             <p>${photographe.city}, ${photographe.country}</p>
             <p>${photographe.tagline}</p>
@@ -216,32 +216,34 @@ export default class View {
   }
 
   // permet d'afficher par l'iD des informations concernant le photographe
-  afficherDetailPhotographeById(idPhotographe, listPhotographe) {
+  afficherDetailPhotographeById(photographe) {
     const div = Utils.createElementFromHTML("<div></div>");
-    console.log(listPhotographe);
+    // permet d'appeler mon container ligne 5 et de le vider "";
+    this.container.innerHTML = "";
+    // console.log(photographe);
     // debugger
     // 2 parmis la liste des photographes récupérer celui qui a l'ID Photographe parcourir dans boucle si id est le même.
     let elNameHTML = "";
     // let test = listPhotographe.photographers.length;
     // console.log(test);
-    for (let index = 0; index < listPhotographe.photographers.length; index++) {
-      const toto = listPhotographe.photographers[index];
-      console.log(toto);
-      // listPhotographe.photographers[i] = un photographe avec ces infos
-      // listPhotographe.photographers[5] = {name: "Marcel Nikolic", id: 195, city: "Berlin", country: "Germany", tags: Array(2),…}
-      if (toto.id === idPhotographe) {
-        console.log(toto.id);
-        console.log(toto.name);
+    // for (let index = 0; index < listPhotographe.photographers.length; index++) {
+    //   const toto = listPhotographe.photographers[index];
+    //   console.log(toto);
+    // listPhotographe.photographers[i] = un photographe avec ces infos
+    // listPhotographe.photographers[5] = {name: "Marcel Nikolic", id: 195, city: "Berlin", country: "Germany", tags: Array(2),…}
+    // if (toto.id == idPhotographe) {
+    //   console.log(toto.id);
+    //   console.log(toto.name);
 
-        elNameHTML = `<li>
-                            <a href="#">${toto.name}</a>
+    elNameHTML = `<li>
+                            <a href="#">${photographe.name}</a>
                         </li>`;
-        // id.push(idPhotographe);
-      }
-    }
+    // id.push(idPhotographe);
+
     // 3 afficher le detail de ce photographe consolelog au debut et ensuite dans le html
     const objHTML = Utils.createElementFromHTML(elNameHTML);
-    div.insertAdjacentElement("beforeend", objHTML);
+    console.log(objHTML);
+    div.appendChild(objHTML);
     this.container.insertAdjacentElement("beforeend", div);
   }
 }

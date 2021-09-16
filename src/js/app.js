@@ -4,7 +4,8 @@ import Controller from "./controller.js";
 
 // regarder import / export
 
-let controller = new Controller();
+window.controller = new Controller();
+// window est un super parent, tout le monde accède a controller
 // permet de lancer afficher liste photographe dans controller
 
 controller.afficherListePhotographe();
