@@ -162,5 +162,11 @@ section article ul {
 }
 /* Components */
 /* Pages */
+section h1 {
+  position: static;
+}
+section .photographerArticle {
+  flex-direction: row;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -20,6 +20,7 @@ export default class Controller {
     view.afficherListePhotographe(listPhotographe);
   }
 
+  // On regroupe deux methodes en une seule pour le onclick pas trop long
   afficherDetailEtMedia(idPhotographe) {
     console.log(idPhotographe);
     this.afficherDetailPhotographe(idPhotographe);
@@ -37,6 +38,7 @@ export default class Controller {
     // console.log(listPhotographe);
 
     let view = new View();
+    view.resetHtml();
     view.afficherDetailPhotographeById(photographe);
   }
 
@@ -46,12 +48,12 @@ export default class Controller {
     // 1 récupérer la liste des photographes comme au dessus DONE
 
     // console.log(listPhotographe);
-    await this.model.getMediaByPhotographeId(
-      "../../assets/data.json",
+    const medias = await this.model.getMediaByPhotographeId(
+      "https://sonnik-pixel.github.io/SonnyDagouneau_6_12072021/assets/data.json",
       idPhotographe
     );
 
     const view = new View();
-    view.afficherMedia("test");
+    view.afficherMedia(medias);
   }
 }

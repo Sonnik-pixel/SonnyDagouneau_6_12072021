@@ -3,6 +3,10 @@ import Utils from "../utils/utils.js";
 export default class View {
   constructor() {
     this.container = document.querySelector(".main");
+    // console.log(this);
+    this.tagsContainer = document.getElementById("containerUl");
+    // Affiche mon container ul de ma navbar avec le les li..
+    // this.tagsContainer = document.querySelector("nav");
   }
 
   afficherListePhotographe(listPhotographe) {
@@ -71,13 +75,8 @@ export default class View {
 
     this.container.insertAdjacentElement("beforeend", section);
 
-    // 16/08 // a ranger
-    const ul = document.getElementById("containerUl");
-    // console.log(ul);
-    // Affiche mon container ul de ma navbar avec le les li..
-
     const tagHtml = this.returnHtmlTag(filterTags);
-    ul.innerHTML = tagHtml;
+    this.tagsContainer.innerHTML = tagHtml;
 
     let listHtmlTag = document.getElementsByClassName("tags");
     for (let index = 0; index < listHtmlTag.length; index++) {
@@ -217,13 +216,14 @@ export default class View {
 
   // permet d'afficher par l'iD des informations concernant le photographe
   afficherDetailPhotographeById(photographe) {
-    const div = Utils.createElementFromHTML("<div></div>");
-    // permet d'appeler mon container ligne 5 et de le vider "";
-    this.container.innerHTML = "";
+    const div = Utils.createElementFromHTML("<section></section>");
+
     // console.log(photographe);
     // debugger
     // 2 parmis la liste des photographes récupérer celui qui a l'ID Photographe parcourir dans boucle si id est le même.
     let elNameHTML = "";
+    let htmltag = "";
+    const tagss = photographe.tags;
     // let test = listPhotographe.photographers.length;
     // console.log(test);
     // for (let index = 0; index < listPhotographe.photographers.length; index++) {
@@ -235,9 +235,28 @@ export default class View {
     //   console.log(toto.id);
     //   console.log(toto.name);
 
-    elNameHTML = `<li>
-                            <a href="#">${photographe.name}</a>
+    for (let index = 0; index < tagss.length; index++) {
+      const element = tagss[index];
+      // console.log(element);
+      // Affiche, le nom de tous les tags de tous les photographe.
+      htmltag += `<li>
+                            <a class="tags">#${element}</a>
                         </li>`;
+    }
+
+    elNameHTML = `
+                  <article class="photographerArticle">
+                    <img
+                    src="./assets/img/pictures/Photographers ID Photos/${photographe.portrait}"
+                    alt=""
+                    />
+                    <h1>${photographe.name}</h1>
+                    <p>${photographe.city}, ${photographe.country}</p>
+                    <p>${photographe.tagline}</p>
+                    <p>${photographe.price}€/jour</p>
+                    <ul>${htmltag}</ul>
+                  </article>
+                 `;
     // id.push(idPhotographe);
 
     // 3 afficher le detail de ce photographe consolelog au debut et ensuite dans le html
@@ -246,7 +265,57 @@ export default class View {
     div.appendChild(objHTML);
     this.container.insertAdjacentElement("beforeend", div);
   }
+
   afficherMedia(medias) {
+    const div = Utils.createElementFromHTML("<div></div>");
+    // debugger;
+    let HTML = "";
+
     console.log(medias);
+    for (let index = 0; index < medias.length; index++) {
+      const currentElement = medias[index];
+      let media = "";
+      console.log(currentElement);
+      console.log(currentElement.image);
+      console.log(currentElement.title);
+      console.log(currentElement.likes);
+      console.log(currentElement.price);
+      console.log(currentElement.video);
+
+      if (currentElement.video != undefined) {
+        media = ` <video controls>
+        <source src="./assets/img/pictures/Photographers Videos/${currentElement.video}" type="video/mp4">
+        </video>`;
+      } else {
+        media = `<img
+        src="./assets/img/pictures/Photographers Pictures/${currentElement.image}"
+        alt=""
+        />`;
+      }
+      HTML = `<article>
+                      <figure>
+                        <a href="#">
+                          ${media}
+                        </a>
+                        <figcaption>
+                          <p>${currentElement.title}</p>
+                          <p>${currentElement.price}</p>
+                          <a href ="#">
+                            <p>${currentElement.likes}</p>
+                          </a>
+                        </figcaption>  
+                      </figure>  
+                    </article>`;
+      const objHTML = Utils.createElementFromHTML(HTML);
+      console.log(objHTML);
+      div.appendChild(objHTML);
+      this.container.insertAdjacentElement("beforeend", div);
+    }
+  }
+
+  resetHtml() {
+    // permet d'appeler mon container ligne 5 et de le vider "";
+    this.container.innerHTML = "";
+    this.tagsContainer.innerHTML = "";
   }
 }
