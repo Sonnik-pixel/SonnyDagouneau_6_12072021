@@ -304,7 +304,7 @@ export default class View {
                         </a>
                         <figcaption>
                           <p>${currentElement.title}</p>
-                          <a href ="#">
+                          <a href ="#" class='like'>
                             <p>${currentElement.likes}</p>
                             <i class="fas fa-heart"></i>
                           </a>
@@ -322,5 +322,10 @@ export default class View {
     // permet d'appeler mon container ligne 5 et de le vider "";
     this.container.innerHTML = "";
     this.tagsContainer.innerHTML = "";
+  }
+
+  likeCounter() {
+    const like = document.getElementsByClassName("like");
+    console.log(like);
   }
 }
