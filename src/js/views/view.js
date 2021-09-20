@@ -216,7 +216,9 @@ export default class View {
 
   // permet d'afficher par l'iD des informations concernant le photographe
   afficherDetailPhotographeById(photographe) {
-    const div = Utils.createElementFromHTML("<section></section>");
+    const div = Utils.createElementFromHTML(
+      "<section class='photographerInfo'></section>"
+    );
 
     // console.log(photographe);
     // debugger
@@ -246,14 +248,15 @@ export default class View {
 
     elNameHTML = `
                   <article class="photographerArticle">
+                    <div class='wrapperImg'>
                     <img
                     src="./assets/img/pictures/Photographers ID Photos/${photographe.portrait}"
                     alt=""
                     />
+                    </div>
                     <h1>${photographe.name}</h1>
                     <p>${photographe.city}, ${photographe.country}</p>
                     <p>${photographe.tagline}</p>
-                    <p>${photographe.price}€/jour</p>
                     <ul>${htmltag}</ul>
                   </article>
                  `;
@@ -267,7 +270,9 @@ export default class View {
   }
 
   afficherMedia(medias) {
-    const div = Utils.createElementFromHTML("<div></div>");
+    const div = Utils.createElementFromHTML(
+      "<div class='photographerMedia'></div>"
+    );
     // debugger;
     let HTML = "";
 
@@ -283,7 +288,7 @@ export default class View {
       console.log(currentElement.video);
 
       if (currentElement.video != undefined) {
-        media = ` <video controls>
+        media = ` <video>
         <source src="./assets/img/pictures/Photographers Videos/${currentElement.video}" type="video/mp4">
         </video>`;
       } else {
@@ -299,9 +304,9 @@ export default class View {
                         </a>
                         <figcaption>
                           <p>${currentElement.title}</p>
-                          <p>${currentElement.price}</p>
                           <a href ="#">
                             <p>${currentElement.likes}</p>
+                            <i class="fas fa-heart"></i>
                           </a>
                         </figcaption>  
                       </figure>  
