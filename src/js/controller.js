@@ -53,6 +53,8 @@ export default class Controller {
       idPhotographe
     );
 
+    // On instanci view, donc il appel view.js et execute le constructor
+    // Une fois dans la class View, il appelle la méthode afficher Media
     const view = new View();
     view.afficherMedia(medias);
   }

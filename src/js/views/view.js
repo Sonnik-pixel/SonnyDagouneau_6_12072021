@@ -269,6 +269,10 @@ export default class View {
     this.container.insertAdjacentElement("beforeend", div);
   }
 
+  // createdCustomSelect() {
+  //   const div = Utils.createElementFromHTML("<div class='customSelect'></div>");
+  // }
+
   afficherMedia(medias) {
     const div = Utils.createElementFromHTML(
       "<div class='photographerMedia'></div>"
@@ -280,23 +284,15 @@ export default class View {
     for (let index = 0; index < medias.length; index++) {
       const currentElement = medias[index];
       let media = "";
-      console.log(currentElement);
-      console.log(currentElement.image);
-      console.log(currentElement.title);
-      console.log(currentElement.likes);
-      console.log(currentElement.price);
-      console.log(currentElement.video);
+      // console.log(currentElement);
+      // console.log(currentElement.image);
+      // console.log(currentElement.title);
+      // console.log(currentElement.likes);
+      // console.log(currentElement.price);
+      // console.log(currentElement.video);
 
-      if (currentElement.video != undefined) {
-        media = ` <video>
-        <source src="./assets/img/pictures/Photographers Videos/${currentElement.video}" type="video/mp4">
-        </video>`;
-      } else {
-        media = `<img
-        src="./assets/img/pictures/Photographers Pictures/${currentElement.image}"
-        alt=""
-        />`;
-      }
+      /*On appel la méthode mediaSelection*/
+      media = this.mediaFactory(currentElement);
       HTML = `<article>
                       <figure>
                         <a href="#">
@@ -315,6 +311,35 @@ export default class View {
       console.log(objHTML);
       div.appendChild(objHTML);
       this.container.insertAdjacentElement("beforeend", div);
+      // let className = document.getElementsByClassName("like");
+      // className.addEventListener("click", likeCounter());
+    }
+    this.addEventListenerOnCounter();
+  }
+
+  /*pattern Factory Method*/
+
+  mediaFactory(currentElement) {
+    let media = "";
+    if (currentElement.video != undefined) {
+      media = this.createMediaComponent(currentElement, "video");
+    } else {
+      media = this.createMediaComponent(currentElement, "image");
+    }
+    return media;
+  }
+
+  createMediaComponent(currentElement, component) {
+    switch (component) {
+      case "video":
+        return ` <video>
+        <source src="./assets/img/pictures/Photographers Videos/${currentElement.video}" type="video/mp4">
+        </video>`;
+      case "image":
+        return `<img
+        src="./assets/img/pictures/Photographers Pictures/${currentElement.image}"
+        alt=""
+        />`;
     }
   }
 
@@ -324,8 +349,28 @@ export default class View {
     this.tagsContainer.innerHTML = "";
   }
 
-  likeCounter() {
-    const like = document.getElementsByClassName("like");
+  addEventListenerOnCounter() {
+    const like = document.getElementsByClassName("fa-heart");
+    // Je vois une collection HTML, je ne peux pas la travailler, il
+    //faut que je parcours mon tableauy avec la boucle ci-dessous :
     console.log(like);
+
+    for (let index = 0; index < like.length; index++) {
+      const currentLike = like[index];
+      console.log(currentLike);
+      currentLike.addEventListener("click", (event) => {
+        currentLike.classList.add("clicked");
+
+        const string = event.target.parentNode.firstElementChild.innerHTML;
+        console.log(string);
+
+        const number = parseInt(string) + 1;
+        console.log(number);
+
+        const numberToString = toString(number);
+        console.log(numberToString);
+        event.preventDefault();
+      });
+    }
   }
 }
