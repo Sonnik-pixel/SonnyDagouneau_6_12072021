@@ -20,14 +20,14 @@ class Model {
 
   async getPhotographeById(url, idPhotographe) {
     let list = await this.get(url);
-    console.log(idPhotographe);
+    // console.log(idPhotographe);
     let listPhotographe = list["photographers"];
     // let listPhotographeMedia = list["media"];
     // console.log(listPhotographeMedia[0].id);
     //Affiche tous mes photographe dans un tableau
     for (let index = 0; index < listPhotographe.length; index++) {
       const currentPhotographe = listPhotographe[index];
-      console.log(currentPhotographe);
+      // console.log(currentPhotographe);
       if (currentPhotographe.id == idPhotographe) {
         return currentPhotographe;
       }

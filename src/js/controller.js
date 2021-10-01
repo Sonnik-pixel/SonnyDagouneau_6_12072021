@@ -22,7 +22,7 @@ export default class Controller {
 
   // On regroupe deux methodes en une seule pour le onclick pas trop long
   afficherDetailEtMedia(idPhotographe) {
-    console.log(idPhotographe);
+    // console.log(idPhotographe);
     this.afficherDetailPhotographe(idPhotographe);
     this.getMediaAndDisplay(idPhotographe);
   }
@@ -44,7 +44,7 @@ export default class Controller {
 
   // création de la nouvelle méthode MEDIA
   async getMediaAndDisplay(idPhotographe) {
-    console.log(idPhotographe);
+    // console.log(idPhotographe);
     // 1 récupérer la liste des photographes comme au dessus DONE
 
     // console.log(listPhotographe);

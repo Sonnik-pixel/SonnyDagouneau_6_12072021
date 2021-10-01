@@ -264,7 +264,7 @@ export default class View {
 
     // 3 afficher le detail de ce photographe consolelog au debut et ensuite dans le html
     const objHTML = Utils.createElementFromHTML(elNameHTML);
-    console.log(objHTML);
+    // console.log(objHTML);
     div.appendChild(objHTML);
     this.container.insertAdjacentElement("beforeend", div);
   }
@@ -280,7 +280,7 @@ export default class View {
     // debugger;
     let HTML = "";
 
-    console.log(medias);
+    // console.log(medias);
     for (let index = 0; index < medias.length; index++) {
       const currentElement = medias[index];
       let media = "";
@@ -300,15 +300,15 @@ export default class View {
                         </a>
                         <figcaption>
                           <p>${currentElement.title}</p>
-                          <a href ="#" class='like'>
-                            <p>${currentElement.likes}</p>
+                          <a href ="#">
+                            <p id='like'>${currentElement.likes}</p>
                             <i class="fas fa-heart"></i>
                           </a>
                         </figcaption>  
                       </figure>  
                     </article>`;
       const objHTML = Utils.createElementFromHTML(HTML);
-      console.log(objHTML);
+      // console.log(objHTML);
       div.appendChild(objHTML);
       this.container.insertAdjacentElement("beforeend", div);
       // let className = document.getElementsByClassName("like");
@@ -352,23 +352,28 @@ export default class View {
   addEventListenerOnCounter() {
     const like = document.getElementsByClassName("fa-heart");
     // Je vois une collection HTML, je ne peux pas la travailler, il
-    //faut que je parcours mon tableauy avec la boucle ci-dessous :
+    //faut que je parcours mon tableau avec la boucle ci-dessous :
     console.log(like);
 
     for (let index = 0; index < like.length; index++) {
       const currentLike = like[index];
+      // Affiche 10x ma balise <i class="fas fa-heart"<i>
       console.log(currentLike);
       currentLike.addEventListener("click", (event) => {
+        // Affiche la class "clicked" seuelement sur le coeur ou je click
         currentLike.classList.add("clicked");
 
         const string = event.target.parentNode.firstElementChild.innerHTML;
+        //Affiche la valeur de mon <p>xx</p>
         console.log(string);
 
         const number = parseInt(string) + 1;
         console.log(number);
+        console.log(document.getElementById("like"));
+        document.getElementById("like").innerHTML = number;
 
-        const numberToString = toString(number);
-        console.log(numberToString);
+        // const numberToString = toString(number);
+        // console.log(numberToString);
         event.preventDefault();
       });
     }
