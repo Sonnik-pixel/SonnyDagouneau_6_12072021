@@ -264,7 +264,7 @@ export default class View {
 
     // 3 afficher le detail de ce photographe consolelog au debut et ensuite dans le html
     const objHTML = Utils.createElementFromHTML(elNameHTML);
-    // console.log(objHTML);
+    console.log(objHTML);
     div.appendChild(objHTML);
     this.container.insertAdjacentElement("beforeend", div);
   }
@@ -280,7 +280,7 @@ export default class View {
     // debugger;
     let HTML = "";
 
-    // console.log(medias);
+    console.log(medias);
     for (let index = 0; index < medias.length; index++) {
       const currentElement = medias[index];
       let media = "";
@@ -300,21 +300,23 @@ export default class View {
                         </a>
                         <figcaption>
                           <p>${currentElement.title}</p>
-                          <a href ="#">
-                            <p id='like'>${currentElement.likes}</p>
+                          <a href ="#" class='like'>
+                            <p>${currentElement.likes}</p>
                             <i class="fas fa-heart"></i>
                           </a>
                         </figcaption>  
                       </figure>  
                     </article>`;
       const objHTML = Utils.createElementFromHTML(HTML);
-      // console.log(objHTML);
+      console.log(objHTML);
       div.appendChild(objHTML);
       this.container.insertAdjacentElement("beforeend", div);
+      // <p id="like${index}">${currentElement.likes}</p> si besoin d'utiliser un id avec un numéro différent derrière
       // let className = document.getElementsByClassName("like");
       // className.addEventListener("click", likeCounter());
     }
     this.addEventListenerOnCounter();
+    this.showValueMedia();
   }
 
   /*pattern Factory Method*/
@@ -352,30 +354,58 @@ export default class View {
   addEventListenerOnCounter() {
     const like = document.getElementsByClassName("fa-heart");
     // Je vois une collection HTML, je ne peux pas la travailler, il
-    //faut que je parcours mon tableau avec la boucle ci-dessous :
+    //faut que je parcours mon tableauy avec la boucle ci-dessous :
     console.log(like);
 
     for (let index = 0; index < like.length; index++) {
       const currentLike = like[index];
-      // Affiche 10x ma balise <i class="fas fa-heart"<i>
       console.log(currentLike);
       currentLike.addEventListener("click", (event) => {
-        // Affiche la class "clicked" seuelement sur le coeur ou je click
-        currentLike.classList.add("clicked");
+        // currentLike.classList.add("clicked");
 
         const string = event.target.parentNode.firstElementChild.innerHTML;
-        //Affiche la valeur de mon <p>xx</p>
         console.log(string);
 
         const number = parseInt(string) + 1;
         console.log(number);
-        console.log(document.getElementById("like"));
-        document.getElementById("like").innerHTML = number;
+
+        // document.getElementById("like").innerHTML = number;
+        event.target.parentNode.firstElementChild.innerHTML = number;
 
         // const numberToString = toString(number);
         // console.log(numberToString);
         event.preventDefault();
       });
     }
+  }
+
+  showValueMedia() {
+    console.log("coucou");
+    const images = document.getElementsByTagName("img");
+    const videos = document.getElementsByTagName("video");
+    // console.log(images);
+    // console.log(videos);
+
+    for (let index = 0; index < images.length; index++) {
+      const currentImages = images[index];
+      currentImages.addEventListener("click", (event) => {
+        console.log(currentImages);
+        event.preventDefault();
+        this.afficherMediaDiv();
+      });
+    }
+
+    for (let index = 0; index < videos.length; index++) {
+      const currentVideos = videos[index];
+      currentVideos.addEventListener("click", (event) => {
+        console.log(currentVideos);
+        event.preventDefault();
+        this.afficherMediaDiv();
+      });
+    }
+  }
+
+  afficherMediaDiv() {
+    console.log("J'affiche mon media");
   }
 }
