@@ -264,7 +264,7 @@ export default class View {
 
     // 3 afficher le detail de ce photographe consolelog au debut et ensuite dans le html
     const objHTML = Utils.createElementFromHTML(elNameHTML);
-    console.log(objHTML);
+    // console.log(objHTML);
     div.appendChild(objHTML);
     this.container.insertAdjacentElement("beforeend", div);
   }
@@ -274,13 +274,14 @@ export default class View {
   // }
 
   afficherMedia(medias) {
+    this.medias = medias;
     const div = Utils.createElementFromHTML(
       "<div class='photographerMedia'></div>"
     );
     // debugger;
     let HTML = "";
 
-    console.log(medias);
+    // console.log(medias);
     for (let index = 0; index < medias.length; index++) {
       const currentElement = medias[index];
       let media = "";
@@ -308,7 +309,7 @@ export default class View {
                       </figure>  
                     </article>`;
       const objHTML = Utils.createElementFromHTML(HTML);
-      console.log(objHTML);
+      // console.log(objHTML);
       div.appendChild(objHTML);
       this.container.insertAdjacentElement("beforeend", div);
       // <p id="like${index}">${currentElement.likes}</p> si besoin d'utiliser un id avec un numéro différent derrière
@@ -335,12 +336,14 @@ export default class View {
     switch (component) {
       case "video":
         return ` <video>
-        <source src="./assets/img/pictures/Photographers Videos/${currentElement.video}" type="video/mp4">
+        <source src="./assets/img/pictures/Photographers Videos/${currentElement.video}" type="video/mp4" id="${currentElement.id}">
         </video>`;
       case "image":
         return `<img
         src="./assets/img/pictures/Photographers Pictures/${currentElement.image}"
-        alt=""
+        alt="${currentElement.title}"
+        id="${currentElement.id}"
+        class="img"
         />`;
     }
   }
@@ -355,11 +358,11 @@ export default class View {
     const like = document.getElementsByClassName("fa-heart");
     // Je vois une collection HTML, je ne peux pas la travailler, il
     //faut que je parcours mon tableauy avec la boucle ci-dessous :
-    console.log(like);
+    // console.log(like);
 
     for (let index = 0; index < like.length; index++) {
       const currentLike = like[index];
-      console.log(currentLike);
+      // console.log(currentLike);
       currentLike.addEventListener("click", (event) => {
         // currentLike.classList.add("clicked");
 
@@ -380,32 +383,89 @@ export default class View {
   }
 
   showValueMedia() {
-    console.log("coucou");
-    const images = document.getElementsByTagName("img");
+    // console.log("coucou");
+    const images = document.getElementsByClassName("img");
     const videos = document.getElementsByTagName("video");
-    // console.log(images);
-    // console.log(videos);
+    // M'affiche également le logo et l'image du photographe, essayer de trouver une parade.
+    // récupérer mes images via une class
+    console.log(images);
+    // Retourne tableau collection HTML avec toutes les images
+    console.log(videos);
+    // Retourne tableau collection HTML avec la vidéo
 
     for (let index = 0; index < images.length; index++) {
       const currentImages = images[index];
       currentImages.addEventListener("click", (event) => {
-        console.log(currentImages);
+        const images = currentImages;
+        // console.log(images);
         event.preventDefault();
-        this.afficherMediaDiv();
+        this.displayModal();
       });
     }
 
     for (let index = 0; index < videos.length; index++) {
       const currentVideos = videos[index];
       currentVideos.addEventListener("click", (event) => {
-        console.log(currentVideos);
+        const videos = currentVideos;
+        // console.log(videos);
         event.preventDefault();
-        this.afficherMediaDiv();
+        // this.afficherMediaDiv(currentVideos);
+        this.displayModal();
       });
     }
   }
 
-  afficherMediaDiv() {
-    console.log("J'affiche mon media");
+  displayModal() {
+    // console.log(videos);
+    // console.log(videos.id);
+    // console.log(images);
+    // console.log(images.id);
+    //1 Afficher ID de mes media OK
+    const medias = this.medias;
+    console.log(medias);
+
+    // this.media affiche un tableau de collection HTML avec tous les medias
+    const modalHtml = document.getElementById("myModal");
+    modalHtml.style.display = "block";
+
+    const buttonHTML = document.getElementById("btnClose");
+    buttonHTML.addEventListener("click", () => {
+      modalHtml.style.display = "none";
+      const mediaContent = document.getElementById(`mediaContent`);
+      console.log(mediaContent);
+      modalHtml.removeChild(mediaContent);
+    });
+
+    const div = Utils.createElementFromHTML("<div id='mediaContent'></div>");
+
+    for (let index = 0; index < medias.length; index++) {
+      const currentMedia = medias[index];
+      console.log(currentMedia.image);
+      console.log(currentMedia.id);
+
+      // debugger;
+      let HTML = "";
+      HTML = `<img
+      src="./assets/img/pictures/Photographers Pictures/${currentMedia.image}"
+      alt="${currentMedia.title}"
+      id="${currentMedia.id}"
+      class="img"
+      />`;
+      const objHTML = Utils.createElementFromHTML(HTML);
+      // console.log(objHTML);
+      div.appendChild(objHTML);
+
+      modalHtml.insertAdjacentElement("beforeend", div);
+    }
+
+    // const modal = Utils.createElementFromHTML(
+    //   `<video class="modal-content">${currentMedia.image}</video>`
+    // );
+    // console.log(modal);
+    // modalHtml.insertAdjacentElement("beforeend", modal);
+
+    //2 Dans la modal afficher toutes les photos et vidéos qui sont dans this.medias
+    //3 Cacher toutes celles qui n'ont pas la même id que le currentElement affiché
+    //4 Faire les flèches suivant / précédente BONUS
   }
 }
