@@ -397,9 +397,9 @@ export default class View {
       const currentImages = images[index];
       currentImages.addEventListener("click", (event) => {
         const images = currentImages;
-        // console.log(images);
+        const idImage = images.id;
         event.preventDefault();
-        this.displayModal();
+        this.displayModal(idImage);
       });
     }
 
@@ -413,9 +413,18 @@ export default class View {
         this.displayModal();
       });
     }
+    const buttonHTML = document.getElementById("btnClose");
+
+    buttonHTML.addEventListener("click", () => {
+      const modalHtml = document.getElementById("myModal");
+      modalHtml.style.display = "none";
+      const mediaContent = document.getElementById(`mediaContent`);
+      console.log(mediaContent);
+      modalHtml.removeChild(mediaContent);
+    });
   }
 
-  displayModal() {
+  displayModal(idImage) {
     // console.log(videos);
     // console.log(videos.id);
     // console.log(images);
@@ -423,39 +432,34 @@ export default class View {
     //1 Afficher ID de mes media OK
     const medias = this.medias;
     console.log(medias);
+    console.log(idImage);
 
     // this.media affiche un tableau de collection HTML avec tous les medias
     const modalHtml = document.getElementById("myModal");
     modalHtml.style.display = "block";
 
-    const buttonHTML = document.getElementById("btnClose");
-    buttonHTML.addEventListener("click", () => {
-      modalHtml.style.display = "none";
-      const mediaContent = document.getElementById(`mediaContent`);
-      console.log(mediaContent);
-      modalHtml.removeChild(mediaContent);
-    });
-
     const div = Utils.createElementFromHTML("<div id='mediaContent'></div>");
 
     for (let index = 0; index < medias.length; index++) {
       const currentMedia = medias[index];
-      console.log(currentMedia.image);
-      console.log(currentMedia.id);
+      if (currentMedia.image != undefined) {
+        // console.log(currentMedia.image);
+        if (currentMedia.id == idImage) {
+          let HTML = "";
+          HTML = `<img
+          src="./assets/img/pictures/Photographers Pictures/${currentMedia.image}"
+          alt="${currentMedia.title}"
+          id="${currentMedia.id}"
+          class="img"
+          />`;
 
-      // debugger;
-      let HTML = "";
-      HTML = `<img
-      src="./assets/img/pictures/Photographers Pictures/${currentMedia.image}"
-      alt="${currentMedia.title}"
-      id="${currentMedia.id}"
-      class="img"
-      />`;
-      const objHTML = Utils.createElementFromHTML(HTML);
-      // console.log(objHTML);
-      div.appendChild(objHTML);
+          const objHTML = Utils.createElementFromHTML(HTML);
+          // console.log(objHTML);
+          div.appendChild(objHTML);
 
-      modalHtml.insertAdjacentElement("beforeend", div);
+          modalHtml.insertAdjacentElement("beforeend", div);
+        }
+      }
     }
 
     // const modal = Utils.createElementFromHTML(
